@@ -55,8 +55,6 @@ from google.appengine.runtime import apiproxy_errors
 from google.appengine.api import taskqueue
 
 # OAuth imports
-import httplib2
-import time
 from oauth2client.appengine import StorageByKeyName
 from oauth2client.client import OAuth2WebServerFlow
 
@@ -80,7 +78,6 @@ import unicodedata
 from codereview import library, engine
 import models
 import google_prediction
-import re
 
 
 ### Constants ###
