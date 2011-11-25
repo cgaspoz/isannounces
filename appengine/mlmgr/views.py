@@ -56,6 +56,7 @@ from google.appengine.api import taskqueue
 
 # OAuth imports
 import httplib2
+import time
 from oauth2client.appengine import StorageByKeyName
 from oauth2client.client import OAuth2WebServerFlow
 
@@ -538,6 +539,8 @@ def _process_incoming_mail(raw_message, recipients, mailing_list):
     processed_subject = _process_string(subject)
     processed_body = _process_string(body)
 
+    email_date = email.utils.parsedate_tz(incoming_msg.date)
+
     msg = models.Message(mailing_list = mailing_list,
                          subject=subject,
                          processed_body = processed_body,
@@ -546,6 +549,8 @@ def _process_incoming_mail(raw_message, recipients, mailing_list):
                          original=db.Text(original),
                          body=db.Text(body),
                          spam=False)
+    if email_date:
+        msg.created = datetime.datetime(*email_date[:6])-datetime.timedelta(seconds= email_date[-1])
 
     # We now predict the type with Google Predict API
     credentials = StorageByKeyName(models.Credentials, "key_for_prediction_credentials", 'credentials').get()
