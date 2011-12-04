@@ -28,6 +28,7 @@ urlpatterns = patterns(
     (r'^(\d+)/mturk$', 'mturk'),
     (r'^(\d+)/process$', 'process'),
     (r'^update/types$', 'update_types'),
+    (r'^update/predictions$', 'accept_predictions'),
     (r'^admin/authorize_prediction/auth_callback$', 'authorize_callback'),
     (r'^admin/authorize_prediction$', 'authorize_prediction'),
     (r'^_ah/xmpp/message/chat/', 'incoming_chat'),

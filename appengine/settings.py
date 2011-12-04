@@ -56,6 +56,12 @@ RIETVELD_INCOMING_MAIL_MAX_SIZE = 500 * 1024  # 500K
 ISANNOUNCES_REVISION = '<early_preview>'
 
 try:
+    # This work on a checked out version of the project, but not in a working copy
+    ISANNOUNCES_REVISION = filter(str.isdigit, "$Revision$")
+except:
+    pass
+
+try:
     ISANNOUNCES_REVISION = open(
         os.path.join(os.path.dirname(__file__), 'REVISION')
     ).read()
@@ -64,8 +70,13 @@ except:
 
 UPLOAD_PY_SOURCE = os.path.join(os.path.dirname(__file__), 'upload.py')
 
-OAUTH_CLIENT_ID = '***************'
-OAUTH_CLIENT_SECRET = '***************'
-GOOGLE_PREDICTION_MODEL = '***************'
-AMAZON_AWS_ACCESS_KEY_ID = '***************'
-AMAZON_AWS_SECRET_KEY = '***************'
+OAUTH_CLIENT_ID = '********************'
+OAUTH_CLIENT_SECRET = '********************'
+GOOGLE_PREDICTION_MODEL = '********************'
+AMAZON_AWS_ACCESS_KEY_ID = '********************'
+AMAZON_AWS_SECRET_KEY = '********************'
+
+# Not sure if it is really the best way to deal with sensitive information, but local_settings overwrite sensitive
+# values from this file (eg. OAUTH_CLIENT_SECRET).
+
+from local_settings import *

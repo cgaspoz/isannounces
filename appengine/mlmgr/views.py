@@ -358,6 +358,20 @@ def update_types(request):
     messages.info(request, 'The following messages: %s were updated with type: %s' % (message_ids, type))
     return HttpResponseRedirect(reverse(index))
 
+@post_required
+def accept_predictions(request):
+    message_ids = []
+    for id in request.POST.getlist('messageID'):
+        message_ids.append(int(id))
+    #logging.info('We will update messages: %s with type: %s' % (message_ids, type))
+    for message_id in message_ids:
+        message = models.Message.get_by_id(int(message_id))
+        message.type = message.prediction
+        message.put()
+        logging.info('Prediction accepted for message: %s -> type: %s' % (message_ids, message.type))
+    #messages.info(request, 'The following messages: %s were updated with type: %s' % (message_ids, type))
+    return HttpResponseRedirect(reverse(index))
+
 def all(request):
     """/all[?show=<positions|conferences|journals|books|others>]
 
