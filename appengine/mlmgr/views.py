@@ -6,7 +6,7 @@
 # ISannounces is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# any later version.
 #
 # ISannounces is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -253,6 +253,14 @@ def show(request):
     return respond(request, 'message.html',
             {'message': message,
              'types': models.TYPE_CHOICES,})
+
+@message_required
+def print_message(request):
+    """/<message>/print - Print a <message>"""
+    message = request.message
+    return respond(request, 'message_print.html',
+            {'message': message,
+            })
 
 @message_required
 def mturk(request):

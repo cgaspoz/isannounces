@@ -1,0 +1,51 @@
+{%extends "base_isan.html"%}
+
+{%block mainmenu2%}
+  {%if user%}
+    <a href="{%url mlmgr.views.index%}">My Issues</a>
+    |
+    <a href="{%url mlmgr.views.index%}">Starred</a>
+    |
+  {%endif%}
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=NA">Unsorted Messages</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=positions">Positions</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=conferences">Conferences</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=journals">Journals</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=books">Books</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}?show=others">Others</a>
+    |
+    <a class="novisit" href="{%url mlmgr.views.index%}">All Messages</a>
+  {%if not user%}
+    |
+    <a class="novisit" href="{{sign_in}}">Sign in</a>
+    with your <a href="https://www.google.com/accounts/NewAccount">Google
+    Account</a> to create announcements and categorize messages
+  {%endif%}
+{%endblock%}
+
+
+{%block body%}
+
+{%endblock%}
+
+
+{%block popup%}
+  {%if issue%}
+    <div class="popup" id="popup-issue">
+      <b>Issue {{issue.key.id}}: {{issue.subject}}
+	{%if issue.closed %} (Closed) {%endif%}</b><br/>
+      Created {{issue.created|timesince}} ago by nickname issue.owner<br/>
+      Modified {{issue.modified|timesince}} ago<br/>
+      Reviewers: nicknames issue.reviewers<br/>
+      Base URL: {{issue.base}}<br/>
+      Comments: {{issue.num_comments}}
+      {%if issue.num_drafts%} <span style="color: red;">+
+	{{issue.num_drafts}} drafts</span>{%endif%}
+    </div>
+  {%endif%}
+{%endblock%}

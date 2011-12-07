@@ -24,6 +24,7 @@ urlpatterns = patterns(
     'mlmgr.views',
     (r'^$', 'index'),
     (r'^(\d+)/show$', 'show'),
+    (r'^(\d+)/print$', 'print_message'),
     (r'^(\d+)/mturk/submit$', 'mturk_submit'),
     (r'^(\d+)/mturk$', 'mturk'),
     (r'^(\d+)/process$', 'process'),

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>
+    ISannounces
+  </title>
+  <link rel="icon" href="{{media_url}}favicon.ico" />
+  <link type="text/css" rel="stylesheet" href="{{media_url}}print.css" />
+  <script type="text/javascript" src="{{media_url}}script.js"></script>
+</head>
+<body>
+
+<div class="page">
+
+    <div id="header">
+        <img src="{{media_url}}/medias/logo32.png" class="logo" />
+        <span id="logo_title">ISannounces</span><br /><span id="logo_subtitle">Your gateway to MIS announcements</span>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="maincontent">
+        <h1>{{ message.subject }}</h1>
+        <ul>
+            <li>From: <b>{{ message.sender }}</b></li>
+            <li>Date: <b>{{ message.created }}</b></li>
+            <li>Type: <b>{{ message.type|capfirst }}</b></li>
+            <li>Source: <b>{{ message.mailing_list.name }}</b></li>
+        </ul>
+        <div class="message_body">
+            {{ message.body|linebreaks }}
+        </div>
+    </div>
+
+    <div id="footer">Printed from isannounces.org<br />Direct link to this message: http://flux.isannounces.org/{{ message.key.id }}/show</div>
+
+</div>
+{%if not is_dev%}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19221948-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+{%endif%}
+
+</body>
+</html>

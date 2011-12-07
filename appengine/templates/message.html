@@ -1,0 +1,42 @@
+{%extends "message_base.html"%}
+
+{%block body%}
+<h2>{{ message.subject }}</h2>
+<p><a class="print" href="{%url mlmgr.views.print_message message.key.id %}" target="_blank">Print this message</a></p>
+<ul>
+    {%if is_admin%}<li>From: <b>{{ message.sender }}</b></li>{%endif%}
+    <li>Date: <b>{{ message.created }}</b></li>
+    <li>Type: <b><a href="{%url mlmgr.views.index%}?show={{ message.type }}s">{{ message.type }}</a></b></li>
+    <li>Source: <b>{{ message.mailing_list.name }}</b></li>
+    {%if is_admin%}<li><form action="{%url mlmgr.views.update_types %}" method="post">
+        <select name="type">{% for key,value in types.items %}
+            <option value="{{ key }}"{%if key = message.type%} selected="selected"{%endif%}>{{ value }}</option>
+        {%endfor%}</select>
+        <input type="hidden" name="messageID" value="{{ message.key.id }}" />
+        <input type="submit" value="Submit" />
+        </form>
+    </li>
+    <li>Prediction: {{ message.prediction }} <form action="{%url mlmgr.views.update_types %}" method="post">
+        <input type="hidden" name="type" value="{{ message.prediction }}" />
+        <input type="hidden" name="messageID" value="{{ message.key.id }}" />
+        <input type="submit" value="Accept prediction" />
+        </form>
+    </li>
+    <li>Scores: {{ message.scores }}</li>{%endif%}
+</ul>
+{{ message.body|linebreaks }}
+{%if is_admin%}
+<hr>
+<h2>Processed message</h2>
+{%if not message.processed_subject%}<p><a href="/{{ message.key.id }}/process">Process this message</a></p>{%endif%}
+<dl>
+    <dt>Processed subject</dt>
+    <dd>{{ message.processed_subject }}</dd>
+    <dt>Processed body</dt>
+    <dd>{{ message.processed_body }}</dd>
+</dl>
+<h2>Raw message</h2>
+{{ message.original|linebreaks }}
+{%endif%}
+
+{%endblock%}

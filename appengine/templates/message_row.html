@@ -1,0 +1,17 @@
+<tr {%if message.spam %}style="color:red"{%endif%} name="issue">
+  <td class="first" width="14"><input type="checkbox" name="messageID" value="{{ message.key.id }}" /></td>
+  <td align="right"><div class="subject"><a class="noul"
+         href="{%url mlmgr.views.show message.key.id%}">{{message.key.id}}</a>
+     </div>
+  </td>
+  {%if show = 'unsorted' %}<td>{{message.prediction}}</td>{%endif%}
+  <td>
+    <div class="subject">
+      <a class="noul" href="{%url mlmgr.views.show message.key.id%}"
+      id="issue-title-{{message.key.id}}">{{message.subject}}</a>
+    </div>
+  </td>
+  <td>{{ message.type }}</td>
+  <td><div class="users">{{ message.mailing_list.name }}</div></td>
+  <td class="last"><div class="date">{{ message.created|date }}</div></td>
+</tr>
