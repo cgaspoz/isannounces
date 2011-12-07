@@ -115,7 +115,7 @@
 }
 
 body {
-    font: 12px/14px 'LiberationSans', Arial, sans-serif;letter-spacing: 0;
+    font: 11px/13px 'LiberationSans', Arial, sans-serif;letter-spacing: 0;
 }
 
 #maincontent {
@@ -123,12 +123,16 @@ body {
     padding: 4px;
 }
 
+h1 {
+    font: 14px/18px 'LiberationSansBoldItalic', Arial, sans-serif;letter-spacing: 0;
+}
+
 ul {
     margin-left: 7px;
     padding-left: 7px;
 }
 .message_body {
-    font: 12px/14px 'LiberationSerifRegular', Arial, serif;letter-spacing: 0;
+    font: 11px/13px 'LiberationSerifRegular', Georgia, serif;letter-spacing: 0;
 }
 
 a:link {
