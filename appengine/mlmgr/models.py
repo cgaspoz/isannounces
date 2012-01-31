@@ -156,6 +156,11 @@ class MturkHIT(db.Model):
 class Credentials(db.Model):
   credentials = CredentialsProperty()
 
+
+class Contextio(db.Model):
+    message_date = db.DateTimeProperty()
+    message_imported = db.BooleanProperty(default=False)
+
 ### Accounts ###
 
 

@@ -23,6 +23,7 @@ from codereview import feeds
 urlpatterns = patterns(
     'mlmgr.views',
     (r'^$', 'index'),
+    (r'^all$', 'all'),
     (r'^(\d+)/show$', 'show'),
     (r'^(\d+)/print$', 'print_message'),
     (r'^(\d+)/mturk/submit$', 'mturk_submit'),
@@ -36,6 +37,9 @@ urlpatterns = patterns(
     (r'^_ah/mail/(.*)', 'incoming_mail'),
     (r'^_ah/queue/batchprocess', 'batch_process_messages'),
     (r'^_ah/queue/exportcloudstorage', 'export_cloud_storage'),
+    (r'^_ah/queue/contextioimport', 'context_getsource'),
+    (r'^_ah/io/(\d+)/(\d+)$', 'context_buildindex'),
+    (r'^_ah/ioimport/(\d+)$', 'context_batchimport'),
     )
 
 feed_dict = {

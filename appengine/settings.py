@@ -76,6 +76,9 @@ GOOGLE_PREDICTION_MODEL = '********************'
 AMAZON_AWS_ACCESS_KEY_ID = '********************'
 AMAZON_AWS_SECRET_KEY = '********************'
 
+CONTEXTIO_API_KEY = '********************'
+CONTEXTIO_API_SECRET = '********************'
+CONTEXTIO_MAILBOX = '********************'
 # Not sure if it is really the best way to deal with sensitive information, but local_settings overwrite sensitive
 # values from this file (eg. OAUTH_CLIENT_SECRET).
 

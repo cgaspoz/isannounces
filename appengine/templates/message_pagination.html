@@ -24,11 +24,11 @@
   </div>
 
   <table id="queues">
-    {%if not messages_list%}
+    {%if not messages%}
       <tr><td colspan="9"><span class="disabled">(None)</span></td></tr>
     {%else%}
       {%include "message_heading.html"%}
-      {%for message in messages_list%}
+      {%for message in messages%}
         {%include "message_row.html"%}
       {%endfor%}
     {%endif%}
