@@ -4,14 +4,13 @@
          href="{%url mlmgr.views.show message.key.id%}">{{message.key.id}}</a>
      </div>
   </td>
-  {%if show = 'unsorted' %}<td>{{message.prediction}}</td>{%endif%}
   <td>
     <div class="subject">
       <a class="noul" href="{%url mlmgr.views.show message.key.id%}"
       id="issue-title-{{message.key.id}}">{{message.subject}}</a>
     </div>
   </td>
-  <td>{{ message.type }}</td>
+  <td>{%if show = 'NAA' %}{{message.prediction}}{%else%}{{ message.type }}{%endif%}</td>
   <td><div class="users">{{ message.mailing_list.name }}</div></td>
   <td class="last"><div class="date">{{ message.created|date }}</div></td>
 </tr>

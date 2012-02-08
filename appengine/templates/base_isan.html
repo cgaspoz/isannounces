@@ -237,7 +237,7 @@ var publish_link = "{%url mlmgr.views.index issue.key.id%}";
   <a href="{%url django.contrib.syndication.views.feed url="issue"%}/{{issue.key.id}}">This issue</a>
   {%endif%} 
   </div>
-  <div style="margin-top: .3em;">This is ISannounces <a href='http://code.google.com/p/isannounces/updates/list'>{{isannounces_revision}}</a></div>
+  <div style="margin-top: .3em;">This is ISannounces <a href='http://code.google.com/p/isannounces/source/detail?r={{isannounces_revision}}'>{{isannounces_revision}}</a></div>
 </div>
 
 {%if not is_dev%}

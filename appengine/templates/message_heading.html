@@ -1,8 +1,7 @@
 <tr align="left">
   <th class="first" colspan="2" align="right">Id</th>
-  {%if show = 'unsorted' %}<th>Prediction</th>{%endif%}
   <th>Subject</th>
-  <th>Type</th>
+  <th>{%if show = 'NAA' %}Prediction{%else%}Type{%endif%}</th>
   <th>Source</th>
   <th>Received</th>
 </tr>

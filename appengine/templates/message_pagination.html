@@ -6,11 +6,11 @@
 </script>
 <h2>{%block subtitle%}Issues{%endblock%}</h2>
 
-<form action="{%if show = 'unsorted' %}{%url mlmgr.views.accept_predictions %}{%else%}{%url mlmgr.views.update_types %}{%endif%}" method="post">
+<form action="{%if show = 'NAA' %}{%url mlmgr.views.accept_predictions %}{%else%}{%url mlmgr.views.update_types %}{%endif%}" method="post">
 
 <div class="issue-list">
   <div class="pagination">{%if user%}<span align="left">
-      {%if show != 'unsorted' %}<select name="type">{% for key,value in types.items %}{<option value="{{ key }}">{{ value }}</option>{%endfor%}</select>{%endif%}
+      {%if show != 'NAA' %}<select name="type">{% for key,value in types.items %}{<option value="{{ key }}">{{ value }}</option>{%endfor%}</select>{%endif%}
     <input type="submit" value="Submit" /></span>{%endif%}
     {%if newest%}
       <a class="novisit" href="{{newest}}">&laquo; Newest</a>
@@ -22,7 +22,7 @@
     {%if next%}<a class="novisit" href="{{next}}">{{nexttext}} &rsaquo;</a>
     {%else%}<span style="color:gray">{{nexttext}} &rsaquo;</span>{%endif%}
   </div>
-
+  
   <table id="queues">
     {%if not messages%}
       <tr><td colspan="9"><span class="disabled">(None)</span></td></tr>
@@ -34,9 +34,7 @@
     {%endif%}
   </table>
 
-  <div class="pagination">{%if user%}<span align="left">
-      {%if show != 'unsorted' %}<select name="type">{% for key,value in types.items %}{<option value="{{ key }}">{{ value }}</option>{%endfor%}</select>{%endif%}
-    <input type="submit" value="Submit" /></span>{%endif%}
+  <div class="pagination">
     {%if newest%}
       <a class="novisit" href="{{newest}}">&laquo; Newest</a>
     {%endif%}
